@@ -8,16 +8,14 @@ let conn = null;
 
 console.log(process.env.NODE_ENV);
 
-if (process.env.NODE_ENV === 'development') {
-  console.log('development');
-  conn = axios.create({ 
-    baseURL: 'http://localhost:8000' 
-  });
-} else {
-  console.log('production');
+// if (process.env.NODE_ENV === 'development') {
+//   conn = axios.create({ 
+//     baseURL: 'http://localhost:8000' 
+//   });
+// } else {
   conn = axios.create({ 
     baseURL: 'https://square-check-api.herokuapp.com'
   });
-}
+// }
 
 ReactDOM.render(<App conn={ conn } />, document.getElementById('root'));
