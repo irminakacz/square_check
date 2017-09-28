@@ -1,3 +1,41 @@
+#form {
+  background-color: white;
+}
+
+table {
+  width: 100%;
+}
+
+td {
+  padding: 0.4vw;
+}
+
+button {
+  font-family: mono;
+  color: white;
+  background-color: #007380;
+  border: solid 0.2vw #007380;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #06464d;
+}
+
+#login-header {
+  background-color: #e5ae72;
+  color: white;
+}
+
+input {
+  font-family: mono;
+}
+
+#error-message {
+  color: red;
+  text-align: center;
+}
+
 @media screen and (max-width: 568px) {
   #form {
     width: 100vw;
@@ -36,12 +74,19 @@
     padding: 1vw;
     font-size: 4vw;
   }
+
+  #error-message {
+    font-size: 4vw;
+    padding: 1.5vw;
+    margin-bottom: -2vw;
+  }
 }
+
 
 @media screen and (min-width: 569px) and (max-width: 768px) {
   #form {
     width: 56vw;
-    height: 34vw;
+    height: 36vw;
     margin: 12vw auto 12vw auto;
     box-shadow: 0.7vw 0.7vw 0 #162e58;
   }
@@ -75,6 +120,12 @@
   button {
     padding: 1vw;
     font-size: 2.5vw;
+  }
+
+  #error-message {
+    font-size: 2.5vw;
+    padding: 1.5vw;
+    margin-bottom: -2vw;
   }
 }
 
@@ -117,13 +168,19 @@
     padding: 1vw;
     font-size: 2vw;
   }
+
+  #error-message {
+    font-size: 2.2vw;
+    padding: 1vw;
+    margin-bottom: -2vw;
+  }
 }
 
 @media screen and (min-width: 1000px) {
   #form {
     background-color: white;
     width: 26vw;
-    height: 16vw;
+    height: 17vw;
     margin: 12vw auto 12vw auto;
     box-shadow: 0.7vw 0.7vw 0 #162e58;
   }
@@ -154,37 +211,11 @@
     padding: 0.5vw;
     font-size: 1.2vw;
   }
+
+  #error-message {
+    font-size: 1.2vw;
+    padding: 0.5vw;
+    margin-bottom: -2vw;
+  }
 }
 
-#form {
-  background-color: white;
-}
-
-table {
-  width: 100%;
-}
-
-td {
-  padding: 0.4vw;
-}
-
-button {
-  font-family: mono;
-  color: white;
-  background-color: #007380;
-  border: solid 0.2vw #007380;
-  cursor: pointer;
-}
-
-button:hover {
-  background-color: #06464d;
-}
-
-#login-header {
-  background-color: #e5ae72;
-  color: white;
-}
-
-input {
-  font-family: mono;
-}

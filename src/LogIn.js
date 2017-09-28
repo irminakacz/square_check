@@ -8,7 +8,8 @@ class LogIn extends Component {
 
     this.state = {
       username: "",
-      password: ""
+      password: "",
+      errorMessage: ""
     }
 
     this.saveUsername = this.saveUsername.bind(this);
@@ -41,6 +42,10 @@ class LogIn extends Component {
         password: ""
       });
       this.props.reloadApp();
+    }).catch(error => {
+      this.setState({
+        errorMessage: "Username or password incorrect"
+      });
     });
   }
 
@@ -54,6 +59,10 @@ class LogIn extends Component {
         <div id="form">
           <div id="login-header">
             Login
+          </div>
+
+          <div id="error-message">
+          { this.state.errorMessage }
           </div>
 
           <form>
