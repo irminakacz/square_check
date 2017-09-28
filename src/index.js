@@ -4,9 +4,14 @@ import './index.css';
 import App from './App';
 import axios from 'axios';
 
-// const conn = axios.create({ baseURL: 'http://localhost:8000' });
-const conn = axios.create({ 
-  baseURL: 'https://square-check-api.herokuapp.com'
-});
+let conn = null;
 
-ReactDOM.render(<App conn={conn} />, document.getElementById('root'));
+if (process.env.NODE_ENV === 'development') {
+  conn = axios.create({ baseURL: 'http://localhost:8000' });
+} else {
+  conn = axios.create({ 
+    baseURL: 'https://square-check-api.herokuapp.com'
+  });
+}
+
+ReactDOM.render(<App conn={ conn } />, document.getElementById('root'));
