@@ -7,11 +7,17 @@ import axios from 'axios';
 let conn = null;
 
 if (process.env.NODE_ENV === 'development') {
-  conn = axios.create({ baseURL: 'http://localhost:8000' });
+  console.log('development');
+  conn = axios.create({ 
+    baseURL: 'http://localhost:8000' 
+  });
 } else {
+  console.log('production');
   conn = axios.create({ 
     baseURL: 'https://square-check-api.herokuapp.com'
   });
 }
+
+console.log(conn);
 
 ReactDOM.render(<App conn={ conn } />, document.getElementById('root'));
