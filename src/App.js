@@ -25,18 +25,16 @@ class App extends Component {
     if (localStorage.getItem("token")) {
       return (
         <div>
-        <div id="navbar">
-          SquareCheck
-        <LogOut logout={ this.logout }/>
-        </div>
-        <UserLists 
-          conn={ this.props.conn } 
-        />
+          <div id="navbar">
+            SquareCheck
+            <LogOut logout={ this.logout }/>
+          </div>
+          <UserLists />
         </div>
       )
     } else {
       return (
-        <LogIn conn={ this.props.conn } reloadApp={ this.login } />
+        <LogIn login={ this.login } />
       )
     }
   }

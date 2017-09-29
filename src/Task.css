@@ -1,4 +1,13 @@
-#delete {
+.Task div {
+  display: inline;
+}
+
+.Task div:first-child {
+  cursor: pointer;
+  padding-right: 0.6vw;
+}
+
+.delete {
   float: right;
 }
 

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from 'axios'
 import List from './List';
 
 class UserLists extends Component {
@@ -13,9 +14,13 @@ class UserLists extends Component {
 
   componentDidMount() {
     let lists = [];
-    this.props.conn.get("/users/", {
+
+    let conn = axios.create({
+      baseURL: localStorage.getItem('baseURL'),
       headers: { Authorization: "JWT " + localStorage.getItem("token") }
-    }).then(response => {
+    });
+
+    conn.get("/users/").then(response => {
       response.data[0].lists.forEach(list => {
         lists.push({
           id: list.id,

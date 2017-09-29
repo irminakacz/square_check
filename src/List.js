@@ -4,10 +4,27 @@ import './List.css';
 
 class List extends Component {
 
+  constructor() {
+    super();
+    this.checkTask = this.checkTask.bind(this);
+  }
+
+  checkTask() {
+    this.forceUpdate();
+  }
+
   render() {
     const tasks = this.props.list.tasks.map(task => {
-      return <Task key={ "task_" + task.id } task={ task } />;
+      return (
+        <Task 
+          key={ "task_" + task.id } 
+          task={ task } 
+          checkTask={ this.checkTask }
+          conn={ this.props.conn }
+        />
+      );
     });
+
 
     return (
       <div className="List">

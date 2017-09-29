@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from 'axios'
 import './LogIn.css';
 
 class LogIn extends Component {
@@ -32,7 +33,11 @@ class LogIn extends Component {
   authenticate(event) {
     event.preventDefault();
 
-    this.props.conn.post('/square-check-auth/', {
+    let conn = axios.create({
+      baseURL: localStorage.getItem("baseURL")
+    });
+
+    conn.post('/square-check-auth/', {
       username: this.state.username,
       password: this.state.password
     }).then(response => {
@@ -41,7 +46,7 @@ class LogIn extends Component {
         username: "",
         password: ""
       });
-      this.props.reloadApp();
+      this.props.login();
     }).catch(error => {
       this.setState({
         errorMessage: "Username or password incorrect"
