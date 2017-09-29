@@ -7,60 +7,39 @@ class Task extends Component {
     super();
 
     this.state = {
-      checkSquare: "[ ]"
     }
     this.checkTask = this.checkTask.bind(this)
   }
 
   componentWillMount() {
-    let square = "[ ]";
-    if (this.props.task.done) {
-      square = "[X]";
-    }
-    this.setState({
-      checkSquare: square
-    });
   }
 
   checkTask(event) {
-    let square = this.state.checkSquare;
-
-    if (square === "[X]") {
-      square = "[ ]";
-      event.target.parentNode.style.color = "black";
-    } else {
-      square = "[X]";
-      event.target.parentNode.style.color = "#dddddd";
-    }
-
     let instance = axios.create({ 
-      baseURL: 'http://localhost:8000' ,
+      baseURL: localStorage.getItem('baseURL'),
       headers: { 
         Authorization: "JWT " + localStorage.getItem("token"),
         "Content-Type": "application/json"
       }
     });
 
-    instance.delete("/tasks/" + this.props.task.id + "/"
-    ).then(response => {
-      console.log(response);
-    }).catch(error => {
-      console.log(error);
+    instance.patch("/tasks/" + this.props.task.id + "/", {
+      task: this.props.task.task,
+      done: !this.props.task.done
+    }).then(response => {
+      this.props.checkTask();
     })
-
-    this.setState({
-      checkSquare: square
-    });
-    this.props.checkTask();
   }
 
   render() {
+    const taskClasses = this.props.task.done ? "Task done" : "Task";
+    const square = this.props.task.done ? "[X]" : "[ ]";
     return (
-      <div className="Task">
+      <div className={ taskClasses }>
         <div
           onClick={ this.checkTask }
         >
-          { this.state.checkSquare }
+          { square }
         </div>
         <div>
           { this.props.task.task }

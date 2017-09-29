@@ -11,9 +11,14 @@ class List extends Component {
       tasks: []
     }
     this.checkTask = this.checkTask.bind(this);
+    this.loadTasks = this.loadTasks.bind(this);
   }
 
   componentDidMount() {
+    this.loadTasks();
+  }
+
+  loadTasks() {
     let tasks = [];
 
     let conn = axios.create({
@@ -26,7 +31,8 @@ class List extends Component {
         tasks.push({
           id: task.id,
           task: task.task, 
-          done: task.done
+          done: task.done,
+          list: task.list
         });
       })
 
@@ -38,7 +44,7 @@ class List extends Component {
 
 
   checkTask() {
-    this.forceUpdate();
+    this.loadTasks();
   }
 
   render() {

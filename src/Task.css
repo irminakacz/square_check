@@ -11,6 +11,10 @@
   float: right;
 }
 
+.done {
+  color: #dddddd;
+}
+
 @media screen and (max-width: 568px) {
   .Task {
     font-size: 4vw;

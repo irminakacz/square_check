@@ -10,9 +10,15 @@ class UserLists extends Component {
     this.state = {
       lists: []
     }
+
+    this.loadLists = this.loadLists.bind(this);
   }
 
   componentDidMount() {
+    this.loadLists()
+  }
+
+  loadLists() {
     let lists = [];
 
     let conn = axios.create({
