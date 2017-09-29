@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 
-let baseURL = null;
 if (process.env.REACT_APP_DEV) {
   localStorage.setItem('baseURL', 'http://localhost:8000' );
 } else {

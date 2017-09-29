@@ -20,13 +20,12 @@ class UserLists extends Component {
       headers: { Authorization: "JWT " + localStorage.getItem("token") }
     });
 
-    conn.get("/users/").then(response => {
-      response.data[0].lists.forEach(list => {
+    conn.get("/lists/").then(response => {
+      response.data.forEach(list => {
         lists.push({
           id: list.id,
           title: list.title, 
-          color: list.color,
-          tasks: list.tasks
+          color: list.color
         });
       })
 
@@ -34,7 +33,6 @@ class UserLists extends Component {
         lists: lists
       });
     });
-
   }
 
   render() {
